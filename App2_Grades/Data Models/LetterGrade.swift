@@ -39,3 +39,24 @@ enum LetterGrade: String {
         }
     }
 }
+
+extension LetterGrade: Comparable {
+    func comparableInt() -> Int {
+        switch self {
+        case .A: 9
+        case .A_minus: 8
+        case .B_plus: 7
+        case .B: 6
+        case .B_minus: 5
+        case .C_plus: 4
+        case .C: 3
+        case .D: 2
+        case .E: 1
+        case .invalidGrade: 0
+        }
+    }
+    
+    static func < (lhs: LetterGrade, rhs: LetterGrade) -> Bool {
+        return lhs.comparableInt() < rhs.comparableInt()
+    }
+}
